@@ -42,6 +42,14 @@ const userController = {
         }) .catch((err)=>{
             res.status(500).json(err)
         })
+    },  getSingleUser (req, res){
+        User.findOne(
+            {_id : req.params.id}
+            )   .then((userData)=>{
+                res.json(userData)
+            }) .catch((err)=>{
+                res.status(500).json(err)
+            })
     }
 }
 

@@ -42,6 +42,38 @@ const thoughtsController = {
         }) .catch((err)=>{
             res.status(500).json(err)
         })
+    }, getingleThought (req, res){
+        User.findOne(
+            {_id : req.params.id}
+        )   .then((thought)=>{
+            res.json(thought)
+        }) .catch((err)=>{
+            res.status(500).json(err)
+        })
+    }, addReaction (req, res){
+        thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            { $addToSet: { reactions: req.body } },
+            { runValidators: true, new: true }
+          ) .then ((thought)=>{
+            res.json(thought)
+        })
+        .catch((err)=>{
+            res.status(500).json(err);
+        })
+        
+    }, removeReaction (req,res){
+        thought.findOneAndDelete(
+            { _id: req.params.thoughtId },
+            { $addToSet: { reactions: req.body } },
+            { runValidators: true, new: true }
+          ) .then ((thought)=>{
+            res.json(thought)
+        })
+        .catch((err)=>{
+            res.status(500).json(err);
+        })
+        
     }
 }
 
