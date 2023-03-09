@@ -42,7 +42,7 @@ const thoughtsController = {
         }) .catch((err)=>{
             res.status(500).json(err)
         })
-    }, getingleThought (req, res){
+    }, getSingleThought (req, res){
         User.findOne(
             {_id : req.params.id}
         )   .then((thought)=>{

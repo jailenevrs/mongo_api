@@ -13,7 +13,6 @@ const userController = {
             })
     } ,
     createUser(req, res){
-        User.create(req, res) 
             User.create(req.body)
                 .then((userData)=>{
                     res.json(userData)
